@@ -1,0 +1,96 @@
+/* TelaIES.css */
+
+/* General Page Styles */
+.instituicao-container {
+  font-family: 'Noto Sans', sans-serif;
+  padding: 20px;
+  background-color: #fffff1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.off {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.off:hover {
+  background-color: #c0392b;
+}
+
+.instituicao-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.instituicao-imagem {
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+.instituicao-header h1 {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 2rem;
+  color: #2c3e50;
+  margin: 5px 0;
+}
+
+.instituicao-mensagem {
+  font-family: 'Oswald', sans-serif;
+  color: #34495e;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-top: 30px; /* Espaço acima do título */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+}
+
+.bio textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: none; /* Desativa o redimensionamento do textarea */
+  min-height: 80px; /* Altura mínima */
+  max-height: 150px; /* Altura máxima */
+  overflow-y: auto; /* Adiciona barra de rolagem vertical se o conteúdo ultrapassar o limite */
+}
+
+/* Lista de Agendamentos */
+.mentoria-list {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.mentoria-item {
+  background-color: #ffffff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  color: #34495e;
+}
+
+.mentoria-item strong {
+  color: #000000;
+}
