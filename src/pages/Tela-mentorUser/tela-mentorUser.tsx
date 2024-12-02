@@ -46,11 +46,12 @@ const MentorDashboard: React.FC = () => {
   const fetchAnamneses = useCallback(async () => {
     try {
       const token = localStorage.getItem('token');
-      if (!token) {
+      const mentorId = localStorage.getItem('mentorId'); // Buscando o mentorId diretamente
+  
+      if (!token || !mentorId) {
         navigate('/login');
         return;
       }
-
       const response = await fetch('http://localhost:8080/anamnese/listar', {
         method: 'GET',
         headers: {
@@ -60,6 +61,8 @@ const MentorDashboard: React.FC = () => {
 
       if (response.ok) {
         const data: Anamnese[] = await response.json();
+
+        
         setAnamneses(data);
       } else {
         const errorResponse = await response.json();
@@ -76,13 +79,14 @@ const MentorDashboard: React.FC = () => {
   const fetchHorarios = useCallback(async () => {
     try {
       const token = localStorage.getItem('token');
-      if (!token) {
+      const mentorId = localStorage.getItem('mentorId'); // Buscando o mentorId diretamente
+  
+      if (!token || !mentorId) {
         navigate('/login');
         return;
       }
 
-      const mentorId = 1;
-
+      
       const response = await fetch(`http://localhost:8080/horario/retorna/${mentorId}`, {
         method: 'GET',
         headers: {
@@ -96,9 +100,9 @@ const MentorDashboard: React.FC = () => {
           id: horario.id,
           emailMentor: horario.emailMentor,
           horario: new Date(horario.horario).toLocaleString('pt-BR', {
-            year: 'numeric',
-            month: '2-digit',
             day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
             hour: '2-digit',
             minute: '2-digit',
           }),
@@ -127,16 +131,19 @@ const MentorDashboard: React.FC = () => {
       fetchAnamneses();
     }
   }, [fetchHorarios, fetchAnamneses, navigate]);
+
+
+
   // Função para criar novo horário
   const handleCreateHorario = async () => {
     try {
-      const token = localStorage.getItem('token');
-      if (!token) {
+    const token = localStorage.getItem('token');
+      const mentorId = localStorage.getItem('mentorId'); // Buscando o mentorId diretamente
+  
+      if (!token || !mentorId) {
         navigate('/login');
         return;
       }
-
-      const mentorId = 1;
 
       if (!newHorario.data || !newHorario.hora) {
         alert('Por favor, preencha todos os campos de data e hora.');
@@ -178,7 +185,9 @@ const MentorDashboard: React.FC = () => {
   const handleDeleteHorario = async (horarioId: number) => {
     try {
       const token = localStorage.getItem('token');
-      if (!token) {
+      const mentorId = localStorage.getItem('mentorId'); // Buscando o mentorId diretamente
+  
+      if (!token || !mentorId) {
         navigate('/login');
         return;
       }

@@ -28,7 +28,7 @@ const Login = () => {
         localStorage.setItem("token", data.token);
         localStorage.setItem("mentoradoId", data.id);  // Aqui você salva o ID do mentorado
         localStorage.setItem('instituicaoId', data.instituicaoId);
-        localStorage.setItem('mentorId', data.mentorId);
+        localStorage.setItem('mentorId', data.id);
         
   
         // Redirecionar com base na role do usuário
