@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './mentorDashboard.css';
 
@@ -40,50 +40,40 @@ const MentorDashboard: React.FC = () => {
   const [anamneses, setAnamneses] = useState<Anamnese[]>([]);
   const navigate = useNavigate();
 
-  // Carregar horários ao montar o componente
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      navigate('/login'); // Redireciona para login caso não tenha token
-    } else {
-      fetchHorarios(); // Busca os horários cadastrados
-      fetchAnamneses(); // Busca as anamneses cadastradas
-    }
-  }, []);
 
-    // Função para buscar anamneses do backend
-    const fetchAnamneses = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-          navigate('/login');
-          return;
-        }
-  
-        const response = await fetch('http://localhost:8080/anamnese/listar', {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        });
-  
-        if (response.ok) {
-          const data: Anamnese[] = await response.json();
-          setAnamneses(data);
-        } else {
-          const errorResponse = await response.json();
-          console.error('Erro ao buscar anamneses:', errorResponse.message || 'Erro desconhecido');
-          alert('Erro ao carregar anamneses.');
-        }
-      } catch (error) {
-        console.error('Erro ao buscar anamneses:', error);
-        alert('Não foi possível carregar as anamneses. Verifique sua conexão.');
+
+  // Função para buscar anamneses
+  const fetchAnamneses = useCallback(async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        navigate('/login');
+        return;
       }
-    };
 
-    
-  // Função para buscar horários do backend
-  const fetchHorarios = async () => {
+      const response = await fetch('http://localhost:8080/anamnese/listar', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const data: Anamnese[] = await response.json();
+        setAnamneses(data);
+      } else {
+        const errorResponse = await response.json();
+        console.error('Erro ao buscar anamneses:', errorResponse.message || 'Erro desconhecido');
+        alert('Erro ao carregar anamneses.');
+      }
+    } catch (error) {
+      console.error('Erro ao buscar anamneses:', error);
+      alert('Não foi possível carregar as anamneses. Verifique sua conexão.');
+    }
+  }, [navigate]);
+
+  // Função para buscar horários
+  const fetchHorarios = useCallback(async () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) {
@@ -102,7 +92,6 @@ const MentorDashboard: React.FC = () => {
 
       if (response.ok) {
         const horariosData = await response.json();
-
         const formattedHorarios = horariosData.map((horario: any) => ({
           id: horario.id,
           emailMentor: horario.emailMentor,
@@ -126,8 +115,18 @@ const MentorDashboard: React.FC = () => {
       console.error('Erro ao buscar horários:', error);
       alert('Não foi possível carregar os horários. Verifique sua conexão.');
     }
-  };
+  }, [navigate]);
 
+  // useEffect para carregar dados
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+    } else {
+      fetchHorarios();
+      fetchAnamneses();
+    }
+  }, [fetchHorarios, fetchAnamneses, navigate]);
   // Função para criar novo horário
   const handleCreateHorario = async () => {
     try {
