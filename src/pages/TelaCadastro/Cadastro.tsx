@@ -25,7 +25,7 @@ const Register = () => {
   useEffect(() => {
     if (tipoUsuario === "comum") {
       // Carregar a lista de IES cadastradas para o tipo de usuário comum
-      fetch("https://reconstruindoatitudes.up.railway.app/instituicao/listar") // A API que retorna a lista de IES cadastradas
+      fetch("https://rabackend-production-6124.up.railway.app/instituicao/listar") // A API que retorna a lista de IES cadastradas
         .then((response) => response.json())
         .then((data) => setIesList(data))
         .catch((error) => console.error("Erro ao carregar IES", error));
@@ -89,8 +89,8 @@ const Register = () => {
 
     const apiRoute =
       tipoUsuario === "comum"
-        ? "https://reconstruindoatitudes.up.railway.app/mentorado/cadastro" // API para cadastro de usuário comum
-        : "https:/reconstruindoatitudes.up.railway.app/instituicao/cadastro"; // API para cadastro de IES
+        ? "https://rabackend-production-6124.up.railway.app/mentorado/cadastro" // API para cadastro de usuário comum
+        : "https:/rabackend-production-6124.up.railway.app/instituicao/cadastro"; // API para cadastro de IES
 
     try {
       const response = await fetch(apiRoute, {
