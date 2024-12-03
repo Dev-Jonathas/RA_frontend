@@ -89,8 +89,8 @@ const Register = () => {
 
     const apiRoute =
       tipoUsuario === "comum"
-        ? "https://rabackend-production-6124.up.railway.app/mentorado/cadastro" // API para cadastro de usuário comum
-        : "https://rabackend-production-6124.up.railway.app/instituicao/cadastro"; // API para cadastro de IES
+        ? "/mentorado/cadastro" // API para cadastro de usuário comum
+        : "/instituicao/cadastro"; // API para cadastro de IES
 
     try {
       const response = await fetch(apiRoute, {
