@@ -77,7 +77,7 @@ const InstituicaoPage: React.FC = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8080/mentor/cadastro", {
+      const response = await fetch("https://reconstruindoatitudes.up.railway.app/mentor/cadastro", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

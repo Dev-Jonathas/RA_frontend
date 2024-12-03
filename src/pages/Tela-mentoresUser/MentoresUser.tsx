@@ -11,7 +11,7 @@ const MentorPage: React.FC = () => {
 
     const fetchMentores = async () => {
         try {
-          const response = await fetch('http://localhost:8080/mentor/listar', {
+          const response = await fetch('https://reconstruindoatitudes.up.railway.app/mentor/listar', {
             headers: {
               'Authorization': `Bearer ${token}`,
             },

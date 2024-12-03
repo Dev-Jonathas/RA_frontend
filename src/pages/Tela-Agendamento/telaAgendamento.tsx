@@ -23,7 +23,7 @@ const AgendaMentor: React.FC = () => {
 
     const fetchMentores = async () => {
       try {
-        const response = await fetch("http://localhost:8080/mentor/listar", {
+        const response = await fetch("https://reconstruindoatitudes.up.railway.app/mentor/listar", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -57,7 +57,7 @@ const AgendaMentor: React.FC = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/horario/retorna/${mentorId}`, // Retorna apenas o mentorId
+        `https://reconstruindoatitudes.up.railway.app/horario/retorna/${mentorId}`, // Retorna apenas o mentorId
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
@@ -91,7 +91,7 @@ const AgendaMentor: React.FC = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8080/mentoria/agendar", {
+      const response = await fetch("https://reconstruindoatitudes.up.railway.app/mentoria/agendar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
