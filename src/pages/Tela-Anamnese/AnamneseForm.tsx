@@ -65,7 +65,7 @@ const AnamneseForm: React.FC = () => {
     const formIsValid = Object.values(formData).every((value) => value !== '');
 
     if (formIsValid) {
-      fetch('https://reconstruindoatitudes.up.railway.app/anamnese/registrar', {
+      fetch('http://localhost:8080/anamnese/registrar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

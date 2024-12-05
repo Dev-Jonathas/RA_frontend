@@ -15,7 +15,7 @@ const MentorPage: React.FC = () => {
   const fetchMentores = async (nome?: string, bio?: string) => {
     try {
       // Monta a URL com os parâmetros de consulta (query string)
-      let url = 'https://rabackend-production-6124.up.railway.app/mentor/listar?';
+      let url = 'http://localhost:8080/mentor/listar?';
       if (nome) url += `nome=${encodeURIComponent(nome)}&`;
       if (bio) url += `bio=${encodeURIComponent(bio)}&`;
   

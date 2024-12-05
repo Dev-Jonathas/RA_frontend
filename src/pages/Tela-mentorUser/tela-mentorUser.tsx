@@ -52,7 +52,7 @@ const MentorDashboard: React.FC = () => {
         navigate('/login');
         return;
       }
-      const response = await fetch('https://reconstruindoatitudes.up.railway.app/anamnese/listar', {
+      const response = await fetch('http://localhost:8080/anamnese/listar', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -87,7 +87,7 @@ const MentorDashboard: React.FC = () => {
       }
 
       
-      const response = await fetch(`https://reconstruindoatitudes.up.railway.app/horario/retorna/${mentorId}`, {
+      const response = await fetch(`http://localhost:8080/horario/retorna/${mentorId}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -157,7 +157,7 @@ const MentorDashboard: React.FC = () => {
         horario: fullDateTime,
       };
 
-      const response = await fetch('https://reconstruindoatitudes.up.railway.app/horario/cadastrar', {
+      const response = await fetch('http://localhost:8080/horario/cadastrar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -192,7 +192,7 @@ const MentorDashboard: React.FC = () => {
         return;
       }
 
-      const response = await fetch(`https://reconstruindoatitudes.up.railway.app/horario/deletar/${horarioId}`, {
+      const response = await fetch(`http://localhost:8080/horario/deletar/${horarioId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,

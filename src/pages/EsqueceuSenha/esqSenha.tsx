@@ -29,7 +29,7 @@ const ChangePassword: React.FC = () => {
     }
 
     try {
-      const response = await fetch("https://reconstruindoatitudes.up.railway.app/auth/EsqueceuSenha", {
+      const response = await fetch("http://localhost:8080/auth/EsqueceuSenha", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
